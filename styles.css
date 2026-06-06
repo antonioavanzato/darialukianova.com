@@ -45,6 +45,57 @@
   font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;
 }
 
+html{scroll-behavior:smooth;}
+
+/* ---------- ВЕРХНИЙ БАННЕР 16:9 ---------- */
+.custom-vocal-homepage .cvh-banner{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:var(--stone-100);
+}
+.custom-vocal-homepage .cvh-banner-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+}
+/* нижний белый градиент — мягкий переход к контенту */
+.custom-vocal-homepage .cvh-banner-fade{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  height:42%;pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.55) 55%,
+    var(--white) 100%);
+}
+/* стрелка «листайте» по центру внизу */
+.custom-vocal-homepage .cvh-scroll{
+  position:absolute;left:50%;bottom:clamp(18px,3.5vw,40px);z-index:2;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:var(--ink);text-decoration:none;
+}
+.custom-vocal-homepage .cvh-scroll-text{
+  font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ink-80);padding-left:.4em;
+}
+.custom-vocal-homepage .cvh-scroll-arrow{
+  font-size:30px;line-height:1;color:var(--ink);
+}
+@media (prefers-reduced-motion: no-preference){
+  .custom-vocal-homepage .cvh-scroll-arrow{animation:cvhBounce 1.8s var(--ease) infinite;}
+  @keyframes cvhBounce{
+    0%,100%{transform:translateY(0);opacity:.65;}
+    50%{transform:translateY(7px);opacity:1;}
+  }
+}
+.custom-vocal-homepage .cvh-scroll:hover .cvh-scroll-arrow{color:#000;}
+/* высокие/узкие экраны: не даём баннеру занять весь экран целиком */
+@media (max-width:680px){
+  .custom-vocal-homepage .cvh-banner{max-height:80vh;}
+}
+
 /* ---------- сетка / секции ---------- */
 .custom-vocal-homepage .cvh-wrap{max-width:var(--maxw);margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
 .custom-vocal-homepage .cvh-section{padding-top:clamp(96px,14vw,200px);padding-bottom:clamp(96px,14vw,200px);}
@@ -289,4 +340,3 @@
 .no-js .custom-vocal-homepage .cvh-x,
 .no-js .custom-vocal-homepage .cvh-rise{opacity:1!important;transform:none!important;translate:0 0!important;filter:none!important;}
 .no-js .custom-vocal-homepage .cvh-clip{clip-path:none!important;transform:none!important;}
-
