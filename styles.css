@@ -48,6 +48,17 @@
 html{scroll-behavior:smooth;}
 body{margin:0;}
 
+/* ---------- ПРЕМИУМ SCROLL-ЭФФЕКТЫ ---------- */
+/* индикатор прогресса чтения */
+.custom-vocal-homepage .cvh-progress{
+  position:fixed;top:0;left:0;z-index:70;
+  height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,#1d1d1f,#6b6b70);
+  will-change:transform;
+}
+/* счётчик — табличные цифры, чтобы не «дёргалась» ширина при наборе */
+.custom-vocal-homepage .cvh-count{font-variant-numeric:tabular-nums;}
+
 /* ---------- НАВИГАЦИЯ ПОВЕРХ БАННЕРА ---------- */
 .custom-vocal-homepage .cvh-nav{
   position:fixed;top:0;left:0;right:0;z-index:60;
