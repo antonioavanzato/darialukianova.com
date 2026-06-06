@@ -523,6 +523,11 @@
 
         setupAccordion('toggleConditions', 'conditionsBlock');
         setupAccordion('toggleConditionsGroup', 'conditionsBlockGroup');
+
+        // Авто-раскрытие нужной вкладки по якорю (#individual / #group)
+        const initTab = (window.location.hash || '').replace('#', '');
+        if (initTab === 'individual') individualBtn.click();
+        else if (initTab === 'group') groupBtn.click();
     });
 
     function setupAccordion(triggerId, blockId) {
